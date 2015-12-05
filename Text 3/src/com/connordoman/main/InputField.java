@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
+import com.connordoman.events.InputEvent;
+
 public class InputField extends JTextField {
 	private static final long serialVersionUID = 5490830098904433039L;
 	
@@ -25,6 +27,12 @@ public class InputField extends JTextField {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			processor.process();
+			if (Game.currentEvent.getClass() == InputEvent.class) {
+				((InputEvent) Game.currentEvent).checkRequirementForInput();
+				if (Game.currentEvent.getCompleted()) {
+					Game.currentEvent.onCompletion();
+				}
+			}
 			setText("");
 		}
 

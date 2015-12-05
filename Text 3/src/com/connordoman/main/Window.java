@@ -27,14 +27,14 @@ public class Window extends JFrame {
 	private void init() {
 		
 		// console stuff
-		console = new Console();
+		console = Game.console;
 		JScrollPane scroller = new JScrollPane();
 		scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		console.add(scroller);
 
 		// system.in stuff
-		inputField = new InputField();
+		inputField = Game.inputField;
 
 		// system.out stuff
 		PrintStream os = new PrintStream(new ConsoleOutputStream(console));

@@ -11,7 +11,7 @@ public class ProcessInput {
 	public void process() {
 		String fieldText = field.getText();
 		
-		if (fieldText.contains("say")) {
+		if (fieldText.trim().startsWith("say")) {
 			String regex = "say";
 			String message = fieldText.substring(fieldText.indexOf(regex) + regex.length());
 			message = message.trim();
