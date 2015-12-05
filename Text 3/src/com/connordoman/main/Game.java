@@ -1,6 +1,6 @@
 package com.connordoman.main;
 
-import com.connordoman.events.Event;
+import java.util.ArrayList;
 
 public class Game {
 
@@ -11,7 +11,8 @@ public class Game {
 	
 	public static Console console = new Console();
 	public static InputField inputField = new InputField();
+	public static ArrayList<String> inputLog = new ArrayList<String>();
 	
-	public static Event currentEvent;
 	public static String playerName;
+	public static int coins;
 }

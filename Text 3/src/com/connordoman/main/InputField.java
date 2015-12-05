@@ -7,32 +7,26 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
-import com.connordoman.events.InputEvent;
-
 public class InputField extends JTextField {
 	private static final long serialVersionUID = 5490830098904433039L;
-	
+
 	private ProcessInput processor;
-	
+
 	public InputField() {
 		processor = new ProcessInput(this);
 		addActionListener(new InputFieldListener());
 		setBorder(BorderFactory.createCompoundBorder(getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		Font fieldFont = new Font("Consolas", Font.PLAIN, getFont().getSize());
 		setFont(fieldFont);
+		requestFocusInWindow();
 	}
-	
+
 	class InputFieldListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			Game.inputLog.add(getText());
 			processor.process();
-			if (Game.currentEvent.getClass() == InputEvent.class) {
-				((InputEvent) Game.currentEvent).checkRequirementForInput();
-				if (Game.currentEvent.getCompleted()) {
-					Game.currentEvent.onCompletion();
-				}
-			}
 			setText("");
 		}
 
