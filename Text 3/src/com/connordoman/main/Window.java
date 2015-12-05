@@ -39,7 +39,6 @@ public class Window extends JFrame {
 		// system.out stuff
 		PrintStream os = new PrintStream(new ConsoleOutputStream(console));
 		System.setOut(os);
-		System.setErr(os);
 
 		// add stuff
 		add(console, BorderLayout.CENTER);

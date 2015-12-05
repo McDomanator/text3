@@ -9,8 +9,11 @@ import javax.swing.JTextField;
 
 public class InputField extends JTextField {
 	private static final long serialVersionUID = 5490830098904433039L;
-
+	
+	private ProcessInput processor;
+	
 	public InputField() {
+		processor = new ProcessInput(this);
 		addActionListener(new InputFieldListener());
 		setBorder(BorderFactory.createCompoundBorder(getBorder(), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 		Font fieldFont = new Font("Consolas", Font.PLAIN, getFont().getSize());
@@ -21,7 +24,7 @@ public class InputField extends JTextField {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(getText());
+			processor.process();
 			setText("");
 		}
 
